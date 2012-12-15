@@ -4,12 +4,12 @@ application:
     
 rabbitmq:
     hosts:
-      - displayname: local1
+      - displayname: localserver
         enabled: true
         hostname: 127.0.0.1
         username: guest
         password: guest
-      - displayname: local2
+      - displayname: anotherserver
         enabled: false
         hostname: 127.0.0.2
         username: guest
@@ -20,13 +20,13 @@ consumers_config:
       - name: console_consumer
         enabled: true
       - name: mongo_consumer
-        enabled: false
+        enabled: true
         hostname: 127.0.0.1
         username: guest
         password: guest
         database_prefix: rhutch_
         port: 27017
       - name: log4r_consumer
-        enabled: false
+        enabled: true
         log_location: /tmp
         log_prefix: rhutch_

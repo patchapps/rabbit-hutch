@@ -6,7 +6,11 @@ module RabbitHutch
     attr_accessor :config
 
     def initialize options
-      file = options[:config_path] || (File.dirname(__FILE__) + '/../config.yaml')
+      
+      file = ARGV[0] || (File.dirname(__FILE__) + '/../config.yaml')
+      
+      puts "Using config from #{file}"
+      
       unless File.exists? file
         raise "Configuration file [#{file}] doesn't exist"
       end

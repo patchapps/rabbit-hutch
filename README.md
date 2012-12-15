@@ -20,22 +20,22 @@ output, a log file or a MongoDb Database.
 	
 # Installation
 	
-	## Activate tracing on rabbitmq server
+	##Activate tracing on rabbitmq server
 	
 	run the following command on each server you want to trace
 	rabbitmqctl trace_on
 	
-	## Install the rabbit-hutch service
+	##Install the rabbit-hutch service
 	
 	gem install rabbithutch
 
 # Usage
 
-	Run as a command line process
-	rabbithutch run 
+	Run as a command line process with a config file
+	rabbithutch run -- ~/config.yaml
 	
 	Run as a service
-	rabbithutch start 
+	rabbithutch start -- ~/config.yaml
 	
 	For help on the service
 	rabbithutch
@@ -68,7 +68,7 @@ output, a log file or a MongoDb Database.
 	consumers_config:
 		consumers:
 		  - name: console_consumer
-			enabled: false
+			enabled: true
 		  - name: mongo_consumer
 			enabled: true
 			hostname: 127.0.0.1
