@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = %q{rabbithutch}
-  gem.version       = "0.0.4"
+  gem.version       = "0.0.5"
   gem.authors       = ["John Ryan"]
   gem.email         = ["555john@gmail.com"]
   gem.description   = %q{RabbitMq Trace Logger - Listen to multiple RabbitMq instances and log them to a 
@@ -20,7 +20,6 @@ single location or MongoDb database. }
   
   gem.rdoc_options << '--exclude spec/testfiles'
   
-  gem.add_dependency "logger"
   gem.add_dependency "amqp"
   gem.add_dependency "bson_ext"
   gem.add_dependency "daemons"
