@@ -16,6 +16,7 @@ output, a log file or a MongoDb Database.
 # Environment
 	
 	* Linux
+	* Windows
 	
 # Installation
 	
@@ -60,7 +61,7 @@ output, a log file or a MongoDb Database.
 			password: guest
 		  - displayname: local2
 			enabled: false
-			hostname: 127.0.0.1
+			hostname: 127.2.2.2
 			username: guest
 			password: guest
 
