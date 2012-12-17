@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = %q{rabbithutch}
-  gem.version       = "0.0.1"
+  gem.version       = "0.0.2"
   gem.authors       = ["John Ryan"]
   gem.email         = ["555john@gmail.com"]
   gem.description   = %q{RabbitMq Trace Logger}
@@ -29,7 +29,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency "mq"
   gem.add_dependency "mongo"
   gem.add_dependency "mongo_ext"
-  gem.add_dependency "redcarpet"
   gem.add_dependency "thor"
   gem.add_dependency "yard"
 

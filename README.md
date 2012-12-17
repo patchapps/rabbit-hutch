@@ -1,29 +1,85 @@
 #rabbit-hutch
 
-RabbitMq Trace Logger
+RabbitMq Trace Logger - Listen to multiple RabbitMq instances and log them to a 
+single location or MongoDb database. 
 
 # Overview
 	
-	This is a ruby service for monotoring the trace output on RabbitMq Nodes and writing the output to console, Log files or MongoDb
+A ruby service for monotoring the trace output on RabbitMq Nodes and writing the 
+output to console, Log files or MongoDb.
 
-#Technologies Used
+Once tracing is started on the target rabbitMQ nodes, the service creates a queue 
+"rabbithutch" that binds to the exchange "amq.rabbitmq.trace". All messages that arrive
+on the queue are then picked up by any registered consumers and written to standard 
+output, a log file or a MongoDb Database.
 	
-	*Ruby
-	*Deamonizr
+# Environment
 	
-# Setup & Installation
-
+	* Linux
+	
+# Installation
+	
+	## Activate tracing on rabbitmq server
+	
+	run the following command on each server you want to trace
+	rabbitmqctl trace_on
+	
+	## Install the rabbit-hutch service
+	
 	gem install rabbithutch
-	
+
+# Usage
+
 	Run as a command line process
 	rabbithutch run 
 	
 	Run as a service
 	rabbithutch start 
 	
-	For help
+	For help on the service
 	rabbithutch
+	
+# Configuration
 
+	To add RabbitMq nodes to monitor and consumers to enable you will need to change the configuration.
+	
+	The config below shows two RabbitMq nodes with each with console, mongoDb and log file consumers
+	
+	./config.yaml
+	
+	application:
+    exchangename: amq.rabbitmq.trace
+    queuename: rabbithutch
+    
+	rabbitmq:
+		hosts:
+		  - displayname: local1
+			enabled: true
+			hostname: 127.0.0.1
+			username: guest
+			password: guest
+		  - displayname: local2
+			enabled: false
+			hostname: 127.0.0.1
+			username: guest
+			password: guest
+
+	consumers_config:
+		consumers:
+		  - name: console_consumer
+			enabled: false
+		  - name: mongo_consumer
+			enabled: true
+			hostname: 127.0.0.1
+			username: guest
+			password: guest
+			database_prefix: rhutch_
+			port: 27017
+		  - name: log4r_consumer
+			enabled: true
+			log_location: /tmp
+			log_prefix: rhutch_
+	
 #Contributing
 	
 	Fork it
