@@ -18,6 +18,7 @@ module RabbitHutch
         end
       end
       
+      
       @logger = Log4r::Logger.new("#{@log_name}#_log")
       @logger.outputters << Log4r::FileOutputter.new("#{@log_name}_filelog", :filename =>  "#{@log_location}/#{@log_prefix}#{@log_name}.log")
     end

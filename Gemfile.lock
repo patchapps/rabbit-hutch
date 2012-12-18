@@ -1,13 +1,12 @@
 PATH
   remote: .
   specs:
-    rabbithutch (0.0.4)
+    rabbithutch (0.0.6)
       amqp
       bson_ext
       daemons
       eventmachine
       log4r
-      logger
       logger
       mongo
       mongo_ext
