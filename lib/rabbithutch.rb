@@ -7,10 +7,7 @@ require_relative "consumers/console_consumer"
 require_relative "worker"
 
   @config = RabbitHutch::Configurator.new({})
-  @log = nil #RabbitHutch::MyLogger.init(@config) 
   
-  puts "-------------------------"
-  puts "Starting RabbitHutch"
   puts "\tEnvironment Settings"
   @config.rabbitmq_hosts.each do |rabbitmq_host|
     puts "\tDisplay Name: #{rabbitmq_host["displayname"]}, host: #{rabbitmq_host["hostname"]}, username: #{rabbitmq_host["username"]}, enabled #{rabbitmq_host["enabled"]}"
@@ -33,7 +30,7 @@ require_relative "worker"
           end 
         end
     end
-    puts "\t...Consumers Initialized for #{rabbitmq_host["displayname"]}"
+    puts "\tdone"
     consumers 
   end
    
@@ -46,11 +43,10 @@ require_relative "worker"
     
     consumers = initialize_consumers(rabbitmq_host)
        
-    puts "\tListening to RabbitMq #{displayname}, host: #{hostname}, username #{username}"
+    puts "Listening to RabbitMq #{displayname}, host: #{hostname}, username #{username}"
     AMQP.connect(:host => hostname, :user => username, :password => password) do |connection|
       channel = AMQP::Channel.new(connection)
       worker = RabbitHutch::Worker.new(channel, @config, consumers)
-      puts "ere"
       worker.start
     end
   end
@@ -58,10 +54,8 @@ require_relative "worker"
   # Entry Point to the application, Begins queue listener and initializes all consmers
   def start
     begin
-      #initialize_consumers
-      
       EventMachine.run do
-        puts "Initializing RabbitMq Listener"
+        
         @config.rabbitmq_hosts.each do |rabbitmq_host|
           if rabbitmq_host["enabled"] == true
             start_worker(rabbitmq_host)
@@ -74,7 +68,6 @@ require_relative "worker"
       end
     rescue Exception=>e
       puts "#{e.message} #{e.backtrace}"
-      #@log.error("#{e.message} #{e.backtrace}")
     end
   end
 

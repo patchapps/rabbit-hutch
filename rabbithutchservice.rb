@@ -4,6 +4,8 @@ require 'daemons'
 # The Service controller.
 def start_service
   begin
+    puts "-------------------------"
+    puts "Starting RabbitHutch"
     Daemons.run(File.dirname(__FILE__) + '/lib/rabbithutch.rb')
   rescue SystemExit=>e
     puts e.inspect
