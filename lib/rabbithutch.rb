@@ -33,6 +33,7 @@ require_relative "worker"
           end 
         end
     end
+    puts "\t...Consumers Initialized for #{rabbitmq_host["displayname"]}"
     consumers 
   end
    
@@ -49,6 +50,7 @@ require_relative "worker"
     AMQP.connect(:host => hostname, :user => username, :password => password) do |connection|
       channel = AMQP::Channel.new(connection)
       worker = RabbitHutch::Worker.new(channel, @config, consumers)
+      puts "ere"
       worker.start
     end
   end

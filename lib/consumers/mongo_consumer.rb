@@ -9,14 +9,15 @@ module RabbitHutch
       puts "\tInitializing MongoDb Consumer"
       @config = config
       @rabbitmq_host = rabbitmq_host
-      @host = rabbitmq_host["hostname"]
+      
       @config.consumers.each do |consumer|
         if consumer["name"] == 'mongo_consumer'
+          @host = consumer['hostname']
+          @port = consumer["port"]
           @database_prefix = consumer['database_prefix']
-         end
+          @database = "#{@database_prefix}#{rabbitmq_host["displayname"]}"
+        end
       end
-      @database = "#{@database_prefix}#{rabbitmq_host["displayname"]}"
-      @port = rabbitmq_host["port"]
       @connection = Mongo::Connection.new(@host, @port)
     end
         
