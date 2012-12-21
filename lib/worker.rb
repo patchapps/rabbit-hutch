@@ -16,10 +16,11 @@ module RabbitHutch
       @queue_name = config.application['queuename']
     end
   
+    # begin listening for all topics in publish.#
     def start
       @exchange = @channel.topic(@exchange_name, :durable => true, :auto_delete => false, :internal => true)
-      @queue = @channel.queue(@queue_name, :durable => false, :auto_delete => true)
-      @queue.bind(@exchange, :routing_key => '#')
+      @queue = @channel.queue(@queue_name, :durable => false, :auto_delete => false)
+      @queue.bind(@exchange, :routing_key => 'publish.#')
       @queue.subscribe(&@consumer.method(:handle_message))
     end
   
