@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rabbithutch (0.0.8)
+    rabbithutch (0.1.0)
       amqp
       bson_ext
       daemons

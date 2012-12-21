@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = %q{rabbithutch}
-  gem.version       = "0.0.8"
+  gem.version       = "0.1.0"
   gem.authors       = ["John Ryan"]
   gem.email         = ["555john@gmail.com"]
   gem.description   = %q{RabbitMq Trace Logger - Listen to multiple RabbitMq instances and log them to a 
