@@ -1,1 +1,1 @@
-require_relative '../rabbithutchservice.rb'
+require_relative '../lib/rabbithutchservice.rb'

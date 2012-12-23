@@ -7,7 +7,7 @@ module RabbitHutch
 
     def initialize options
       
-      file = ARGV[0] || (File.dirname(__FILE__) + '/../config.yaml')
+      file = options['config'] || (File.dirname(__FILE__) + '/../config.yaml')
       
       puts "Using config from #{file}"
       

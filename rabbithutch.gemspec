@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = %q{rabbithutch}
-  gem.version       = "0.1.2"
+  gem.version       = "0.1.3"
   gem.authors       = ["John Ryan"]
   gem.email         = ["555john@gmail.com"]
   gem.description   = %q{RabbitMq Trace Logger - Listen to multiple RabbitMq instances and log them to a 
@@ -14,8 +14,9 @@ single location or MongoDb database. }
   
   gem.extra_rdoc_files = ["LICENSE.txt","README.md"  ]
   gem.files         = `git ls-files`.split($/)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.executable    = 'rabbithutch'
+  #gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  #gem.executable    = ['rabbithutch', 'bin/rabbithutch']
+  gem.executables    = ['rabbithutch', 'rabbithutchmgr']
   gem.require_paths = ["lib"]
   
   gem.rdoc_options << '--exclude spec/testfiles'
@@ -26,6 +27,7 @@ single location or MongoDb database. }
   gem.add_dependency "eventmachine"
   gem.add_dependency "logger"
   gem.add_dependency "log4r"
+  gem.add_dependency "mustache"
   gem.add_dependency "mq"
   gem.add_dependency "mongo"
   gem.add_dependency "mongo_ext"
