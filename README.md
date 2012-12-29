@@ -14,9 +14,10 @@ on the queue are then picked up by any registered consumers and written to stand
 output, a log file or a MongoDb Database.
 	
 # Environment
-	
-	* Linux
-	* Windows
+
+	This has been tested on 
+	* Ubuntu Linux
+	* Windows 8
 	
 # Installation
 	
@@ -29,6 +30,12 @@ output, a log file or a MongoDb Database.
 	
 	gem install rabbithutch
 
+#RabbitMq Configuration
+
+	In order for tracing to work, the trace_on option must be enabled on all rabbitMq nodes.
+	Turn on tracing on the nodes using the following command:
+	rabbitmqctl trace_on
+	
 # Usage
 
 	Run as a command line process with a config file
