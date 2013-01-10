@@ -100,6 +100,8 @@ output, a log file or a MongoDb Database.
 	-gem build rabbithutch.gemspec
 	-gem push rabbithutch-0.0.1.gem # where X.X.X is the version of the compiled gemspec
 
+#To do
 
-References
-	
+	- [ ] Add Http Appender to post messages to url e.g. pastebin.org or mongodb REST interface
+	- [ ] Come up with better config mgt for gems like adding a management Command Line Interface to set env settings
+
