@@ -1,0 +1,32 @@
+application:
+    exchangename: amq.rabbitmq.trace
+    queuename: rabbithutch
+    
+rabbitmq:
+    hosts:
+      - displayname: localserver
+        enabled: true
+        hostname: 127.0.0.1
+        username: guest
+        password: guest
+      - displayname: anotherserver
+        enabled: false
+        hostname: 127.0.0.2
+        username: guest
+        password: guest
+
+consumers_config:
+    consumers:
+      - name: console_consumer
+        enabled: true
+      - name: mongo_consumer
+        enabled: true
+        hostname: 127.0.0.1
+        username: guest
+        password: guest
+        database_prefix: rhutch_
+        port: 27017
+      - name: log4r_consumer
+        enabled: true
+        log_location: /tmp
+        log_prefix: rhutch_

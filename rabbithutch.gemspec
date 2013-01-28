@@ -16,7 +16,7 @@ single location or MongoDb database. }
   gem.files         = `git ls-files`.split($/)
   #gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   #gem.executable    = ['rabbithutch', 'bin/rabbithutch']
-  gem.executables    = ['rabbithutch', 'rabbithutchmgr']
+  gem.executables    = ['rabbithutch', 'rabbithutchmgr', 'rabbithutchweb']
   gem.require_paths = ["lib"]
   
   gem.rdoc_options << '--exclude spec/testfiles'
@@ -33,5 +33,10 @@ single location or MongoDb database. }
   gem.add_dependency "mongo_ext"
   gem.add_dependency "thor"
   gem.add_dependency "yard"
+  
+  gem.add_dependency "haml"
+  gem.add_dependency "sinatra"
+  gem.add_dependency "thin"
+  gem.add_dependency "shotgun"
 
 end
