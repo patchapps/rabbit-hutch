@@ -1,1 +1,1 @@
-shotgun ./web/rabbithutchweb.rb
+shotgun '../web/rabbithutchweb.rb'
