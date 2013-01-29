@@ -1,0 +1,8 @@
+%h3 Registered RabbitMQs
+%table
+  - cs.each do|c|
+    %tr
+      %td= c["displayname"]
+      %td= c["enabled"]
+      %td= c["hostname"]
+      %td= c["username"]
