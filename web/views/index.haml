@@ -1,8 +1,26 @@
-%h3 Registered RabbitMQs
-%table
-  - cs.each do|c|
+%h3 Application Settings
+%table.table.table-bordered
+  %tr
+    %td RabbitMq Trace Exchange Name
+    %td= app["exchangename"]
+  %tr
+    %td Queue Name
+    %td= app["queuename"]
+
+
+%h3 Registered RabbitMQs      
+%table.table.table-bordered
+  - rabbit.each do|item|
     %tr
-      %td= c["displayname"]
-      %td= c["enabled"]
-      %td= c["hostname"]
-      %td= c["username"]
+      %td= item["displayname"]
+      %td= item["enabled"]
+      %td= item["hostname"]
+      %td= item["username"]
+      
+%h3 Consumers      
+%table.table.table-bordered
+  - consumers.each do|item|
+    %tr
+      %td= item["name"]
+      %td= item["enabled"]
+

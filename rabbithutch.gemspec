@@ -4,19 +4,20 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = %q{rabbithutch}
-  gem.version       = "0.1.4"
+  gem.version       = "0.1.5"
   gem.authors       = ["John Ryan"]
   gem.email         = ["555john@gmail.com"]
   gem.description   = %q{RabbitMq Trace Logger - Listen to multiple RabbitMq instances and log them to a 
 single location or MongoDb database. }
-  gem.summary       = %q{A ruby service for monotoring the trace output on RabbitMq Nodes and writing the output to console, Log files or MongoDb}
+  gem.summary       = %q{A ruby service for monotoring the trace output on RabbitMq Nodes and writing the output to console, Log files or MongoDb.
+Also provides a web interface to manage the service}
   gem.homepage      = %q{http://rabbithutch.herokuapp.com/}
   
   gem.extra_rdoc_files = ["LICENSE.txt","README.md"  ]
   gem.files         = `git ls-files`.split($/)
   #gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   #gem.executable    = ['rabbithutch', 'bin/rabbithutch']
-  gem.executables    = ['rabbithutch', 'rabbithutchmgr', 'rabbithutchweb']
+  gem.executables    = ['rabbithutch', 'rabbithutchweb']
   gem.require_paths = ["lib"]
   
   gem.rdoc_options << '--exclude spec/testfiles'

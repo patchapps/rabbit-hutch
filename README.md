@@ -3,6 +3,10 @@
 RabbitMq Trace Logger - Listen to multiple RabbitMq instances and log them to a 
 single location or MongoDb database. 
 
+Applications included
+* rabbithutch - a service to listen to the exchanges
+* rabbithutchweb - a web site to configure the service 
+
 # Overview
 	
 A ruby service for monotoring the trace output on RabbitMq Nodes and writing the 
@@ -37,16 +41,34 @@ output, a log file or a MongoDb Database.
 	rabbitmqctl trace_on
 	
 # Usage
+	
+	Start up the Web Interface
+		
+		rabbithutchweb
 
 	Run as a command line process with a config file
-	rabbithutch run -- ~/config.yaml
+	
+		rabbithutch run -- ~/config.yaml
 	
 	Run as a service
-	rabbithutch start -- ~/config.yaml
+		
+		rabbithutch start -- ~/config.yaml
 	
 	For help on the service
-	rabbithutch
+		
+		rabbithutch
+
+# Troubleshooting
 	
+	Web Manager 
+	If the web service has not been shut down properly the process my still be alive in the background 
+	ERROR:
+		 (/home/USERNAME/.rvm/gems/ruby-1.9.3-p327/gems/eventmachine-1.0.0/lib/eventmachine.rb:526:in 
+		`start_tcp_server': no acceptor (port is in use or requires root privileges) (RuntimeError))
+	To fix this kill the process named shotgun
+	- ps aux | grep shot
+	- kill -9 (the process number)
+
 # Configuration
 
 	To add RabbitMq nodes to monitor and consumers to enable you will need to change the configuration.
@@ -111,4 +133,5 @@ output, a log file or a MongoDb Database.
 
 	- [ ] Add Http Appender to post messages to url e.g. pastebin.org or mongodb REST interface
 	- [ ] Come up with better config mgt for gems like adding a management Command Line Interface to set env settings
+	- [x] Add a Web UI to manage the service 
 
