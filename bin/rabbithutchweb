@@ -1,1 +1,2 @@
-shotgun '../web/rabbithutchweb.rb'
+web_location =  File.dirname(__FILE__) + '/../web/rabbithutchweb.rb'
+puts `shotgun #{web_location}`
