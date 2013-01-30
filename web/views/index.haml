@@ -6,17 +6,37 @@
   %tr
     %td Queue Name
     %td= app["queuename"]
-
-
-%h3 Registered RabbitMQs      
-%table.table.table-bordered
-  - rabbit.each do|item|
+     
+%h3 Registered RabbitMQs
+%form(action="/rabbitmqsettings/edit" method="POST")       
+%table.table.table-bordered.table-striped
+  %thead
     %tr
-      %td= item["displayname"]
-      %td= item["enabled"]
-      %td= item["hostname"]
-      %td= item["username"]
-      
+      %td Display Name
+      %td Hostname
+      %td Username
+      %td Enabled
+  %tbody
+    - rabbit.each do|item|
+      %tr
+        %form(action="/rabbitmqsettingsedit/edit" method="POST")  
+          %td
+            %input{:type => "text", :readonly => "", :name=>"displayname", :value=>item["displayname"]}/
+          %td
+            %input{:type => "text", :readonly => "",:name=>"hostname", :value=>item["hostname"]}/
+          %td
+            %input{:type => "text", :readonly => "",:name=>"username", :value=>item["username"]}/
+          %td
+            %input{:type => "checkbox", :readonly => "",:name=>"enabled", :checked=>item["enabled"]}/
+          %td
+            %input#btn_edit{:type => "submit", :value=>"Edit"}/
+            %input#btn_delete{:type => "submit", :value=>"Delete"}/
+  %tfoot
+    %tr
+      %td{:colspan => "5"}
+        %form(action="/rabbitmqsettingsadd/add" method="POST")  
+          %input#btn_add{:type => "submit", :value=>"Add New"}/
+    
 %h3 Consumers      
 %table.table.table-bordered
   - consumers.each do|item|

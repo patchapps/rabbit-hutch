@@ -1,0 +1,29 @@
+%h3 Registered RabbitMQs
+%form(action="/rabbitmqsettings/edit" method="POST")       
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %td{:colspan => "2"}
+          Update rabbitMQ Settings
+       
+    %tbody
+      %tr
+        %td Display Name
+        %td
+          %input#exchange{:type => "text", :value=>settings["displayname"]}/
+      %tr
+        %td Hostname
+        %td
+          %input#exchange{:type => "text", :name=>"hostname", :value=>settings["hostname"]}/
+      %tr
+        %td Username
+        %td
+          %input#exchange{:type => "text", :name=>"username", :value=>settings["username"]}/
+      %tr
+        %td Enabled
+        %td
+          %input#exchange{:type => "checkbox", :checked=>settings["enabled"]}/
+    %tfoot
+      %tr
+        %td{:colspan => "2"}
+          %input#btn_save{:type => "submit", :value=>"Save"}/

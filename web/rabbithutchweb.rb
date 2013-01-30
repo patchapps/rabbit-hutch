@@ -11,3 +11,15 @@ get '/' do
     :consumers => @config['consumers_config']['consumers']
   }
 end
+
+post '/rabbitmqsettingsadd/add' do
+  haml :rabbitmqsettings, :locals=>{:settings=>params} 
+end
+
+post '/rabbitmqsettingsedit/edit' do
+  haml :rabbitmqsettings, :locals=>{:settings=>params} 
+end
+
+post '/rabbitmqsettingsedit/save' do
+  redirect "/"
+end
