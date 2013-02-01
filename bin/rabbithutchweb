@@ -3,3 +3,4 @@ puts "== Launching the rabbithutch web manager"
 puts ">> Open the URL below to administer the rabbithutch service"
 web_location =  File.dirname(__FILE__) + '/../web/rabbithutchweb.rb'
 system "shotgun #{web_location}"
+puts "Finished"

@@ -12,6 +12,7 @@
 %table.table.table-bordered.table-striped
   %thead
     %tr
+      %td ID
       %td Display Name
       %td Hostname
       %td Username
@@ -19,7 +20,9 @@
   %tbody
     - rabbit.each do|item|
       %tr
-        %form(action="/rabbitmqsettingsedit/edit" method="POST")  
+        %form(action="/rabbitmqsettings/edit" method="POST")  
+          %td
+            %input{:type => "text", :readonly => "", :name=>"id", :value=>item["id"]}/
           %td
             %input{:type => "text", :readonly => "", :name=>"displayname", :value=>item["displayname"]}/
           %td
@@ -29,13 +32,14 @@
           %td
             %input{:type => "checkbox", :readonly => "",:name=>"enabled", :checked=>item["enabled"]}/
           %td
-            %input#btn_edit{:type => "submit", :value=>"Edit"}/
-            %input#btn_delete{:type => "submit", :value=>"Delete"}/
+            %a{:href => "/rabbitmqsettings/edit/#{item["id"]}"} edit
+            %a{:href => "/rabbitmqsettings/delete/#{item["id"]}"} delete
+            
   %tfoot
     %tr
-      %td{:colspan => "5"}
-        %form(action="/rabbitmqsettingsadd/add" method="POST")  
-          %input#btn_add{:type => "submit", :value=>"Add New"}/
+      %td{:colspan => "6"}
+        %form(action="/rabbitmqsettings/add" method="POST")  
+          %a{:href => "/rabbitmqsettings/add"} Add New
     
 %h3 Consumers      
 %table.table.table-bordered

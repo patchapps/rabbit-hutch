@@ -4,22 +4,26 @@ application:
     
 rabbitmq:
     hosts:
-      - displayname: dev01
+      - id: 1
+        displayname: dev01
         enabled: true
         hostname: 127.0.0.1
         username: guest
         password: guest
-      - displayname: dev02
+      - id: 2
+        displayname: dev02
         enabled: false
         hostname: 127.0.0.2
         username: guest
         password: guest
-      - displayname: QA
+      - id: 3
+        displayname: QA
         enabled: false
         hostname: 127.0.0.3
         username: guest
         password: guest
-      - displayname: STAGING
+      - id: 4
+        displayname: STAGING
         enabled: false
         hostname: 127.0.0.4
         username: guest

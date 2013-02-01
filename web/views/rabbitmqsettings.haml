@@ -1,0 +1,37 @@
+%h3 Registered RabbitMQs
+%form(action="/rabbitmqsettings/save" method="POST")       
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %td{:colspan => "2"}
+          Update rabbitMQ Settings
+              
+    %tbody
+      %tr
+        %td ID
+        %td
+          %input{:type => "text", :readonly => "", :name=>"id", :value=>settings["id"]}/
+      %tr
+        %td Display Name
+        %td
+          %input{:type => "text", :name=>"displayname", :value=>settings["displayname"]}/
+      %tr
+        %td Hostname
+        %td
+          %input{:type => "text", :name=>"hostname", :value=>settings["hostname"]}/
+      %tr
+        %td Username
+        %td
+          %input{:type => "text", :name=>"username", :value=>settings["username"]}/
+      %tr
+        %td Password
+        %td
+          %input{:type => "password", :name=>"password", :value=>settings["password"]}/
+      %tr
+        %td Enabled
+        %td
+          %input{:type => "checkbox", :name=>"enabled", :checked=>settings["enabled"]}/
+    %tfoot
+      %tr
+        %td{:colspan => "2"}
+          %input#btn_save{:type => "submit", :value=>"Save"}/
