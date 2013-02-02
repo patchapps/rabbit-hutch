@@ -1,0 +1,18 @@
+%h3 Manage Configuration Manually
+
+%h2 Load an external config
+  
+%form(action="/manageconfig" method="POST")     
+  Select a file to upload:
+  %input#filetext{:size => "50", :name=>"filename", :type => "file"}
+  %input#btn_save{:type => "submit", :value=>"Open"}/
+
+%form(action="/manageconfig/save" method="POST")  
+
+  %input#btn_save{:type => "submit", :value=>"Save"}/
+  %br/
+  %h2
+  %textarea{:name=>"filetext", :cols => 120, :rows => "20"}
+    :preserve
+    =data["filename"]
+ 

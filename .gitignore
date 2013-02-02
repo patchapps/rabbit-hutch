@@ -20,5 +20,6 @@ doc/
 
 .project
 *.pid
+config.yaml
 
 

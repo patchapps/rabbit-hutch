@@ -8,7 +8,7 @@ module RabbitHutchWeb
     attr_accessor :settings, :application, :rabbitmq_hosts, :consumers
     
     def initialize
-      file = File.dirname(__FILE__) + '/../configs/config2.yaml'
+      file = File.dirname(__FILE__) + '/../config.yaml'
       @settings = YAML::load(File.open(file))
       @application = settings['application']
       @rabbitmq_hosts = settings['rabbitmq']['hosts']
@@ -16,11 +16,19 @@ module RabbitHutchWeb
     end
     
     def save
-      file = File.dirname(__FILE__) + '/../configs/config2.yaml'
+      file = File.dirname(__FILE__) + '/../config.yaml'
       File.open(file, "w") do|f|
         f.write self.settings.to_yaml
       end
     end
+    
+    def parse(data)
+      @settings = YAML::load(data)
+      @application = settings['application']
+      @rabbitmq_hosts = settings['rabbitmq']['hosts']
+      @consumers = settings['consumers_config']['consumers']
+    end
+    
   end
 end
 
@@ -48,7 +56,6 @@ get '/rabbitmqsettings/edit/:id' do |id|
 end
 
 post '/rabbitmqsettings/save' do
-  p "saving"
   exists = false
   settings = RabbitHutchWeb::RabbitSettings.new
   settings.rabbitmq_hosts.each{|item|
@@ -63,7 +70,6 @@ post '/rabbitmqsettings/save' do
   }
   
   unless exists
-    
     setting = 
     {
     "id" => params["id"],
@@ -73,7 +79,6 @@ post '/rabbitmqsettings/save' do
     "username" => params["username"],
     "password" => params["password"]
     }
-    
     settings.rabbitmq_hosts << setting
   end
     
@@ -82,5 +87,20 @@ post '/rabbitmqsettings/save' do
 end
 
 post '/rabbitmqsettings/delete' do
+  redirect "/"
+end
+
+get '/manageconfig' do
+  haml :manageconfig, :locals=>{:data=>params}
+end
+
+post '/manageconfig' do
+  haml :manageconfig, :locals=>{:data=>params}
+end
+
+post '/manageconfig/save' do
+  settings = RabbitHutchWeb::RabbitSettings.new
+  settings.parse(params["filetext"])
+  settings.save
   redirect "/"
 end

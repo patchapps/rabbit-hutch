@@ -32,13 +32,24 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "http://rabbithutch.herokuapp.com"} rabbithutch
+          %a.brand{:href => "http://rabbithutch.herokuapp.com"} rabbithutch.herokuapp.com
+          %a.brand{:href => "http://rubydoc.info/gems/rabbithutch/0.1.6/frames"} API Documentation
+          %a.brand{:href => "https://github.com/patchapps/rabbit-hutch/"} Code On GitHub
+          
     %header#overview.jumbotron.subhead
       .container
         %h2
           rabbit-hutch web manager
           %h2
     .container
+      %br/
+      %ul.nav.nav-tabs
+        %li.active
+          %a{:href => "#"} Overview
+        %li
+          %a{:href => "/manageconfig"} Manage Configuration Manually
+        %li
+          %a{:href => "#"} ...
       / Main hero unit for a primary marketing message or call to action
       .row
         .span12
